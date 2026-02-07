@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "User Input",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "carousel_generator_agent",
+      "type": "Agent",
+      "label": "Carousel Generator Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6986f22ce31e7bbb7ef45a62"
+    },
+    {
+      "id": "output_node",
+      "type": "Output",
+      "label": "Generated Carousel",
+      "nodeCategory": "end"
+    }
+  ],
+  "edges": [
+    {
+      "source": "input_node",
+      "target": "carousel_generator_agent"
+    },
+    {
+      "source": "carousel_generator_agent",
+      "target": "output_node"
+    }
+  ]
+}

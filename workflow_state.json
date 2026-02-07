@@ -3,7 +3,7 @@
   "workflow_type": "single_agent",
   "agents": [
     {
-      "agent_id": "6986f03f95535c453591408b",
+      "agent_id": "6986f22ce31e7bbb7ef45a62",
       "agent_name": "Carousel Generator Agent",
       "agent_type": "single",
       "node_id": "carousel_generator_agent",

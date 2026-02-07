@@ -10,33 +10,43 @@ import { Textarea } from '@/components/ui/textarea'
 import { Loader2, Copy, Check, ChevronDown, ChevronUp, RefreshCw } from 'lucide-react'
 
 // TypeScript interfaces based on actual response structure
-interface Slide {
+interface CarouselSlide {
   slide_number: number
   headline: string
   supporting_text: string
   visual_suggestion: string
+  design_notes: string
+}
+
+interface Caption {
+  full_caption: string
+  hook: string
+  body: string
+  cta: string
 }
 
 interface Hashtags {
-  broad_reach: string[]
-  niche_specific: string[]
-  authority_building: string[]
+  broad: string[]
+  niche: string[]
+  authority: string[]
+  all_hashtags: string
 }
 
-interface PostingStrategy {
-  best_time: string
-  engagement_tips: string[]
-  follow_up_comments: string[]
+interface PostingRecommendations {
+  best_times: string[]
+  best_days: string[]
+  reasoning: string
 }
 
 interface CarouselResponse {
-  slides: Slide[]
-  caption: string
+  carousel_slides: CarouselSlide[]
+  caption: Caption
   hashtags: Hashtags
   alternative_hooks: string[]
   alternative_ctas: string[]
-  posting_strategy: PostingStrategy
+  posting_recommendations: PostingRecommendations
   engagement_questions: string[]
+  content_strategy_notes: string
 }
 
 interface FormData {
@@ -50,7 +60,7 @@ interface FormData {
   examples: string
 }
 
-const AGENT_ID = '6986f03f95535c453591408b'
+const AGENT_ID = '6986f22ce31e7bbb7ef45a62'
 
 const TONE_CHIPS = ['Bold', 'Conversational', 'Authoritative', 'Empathetic']
 const PRIMARY_GOALS = ['Educate', 'Lead Gen', 'Personal Brand', 'Sales']
@@ -99,7 +109,7 @@ export default function Home() {
     prompt += `. CTA: ${formData.ctaType}`
 
     if (formData.industry) {
-      prompt += `. Industry: ${formData.industry}`
+      prompt += ` in the ${formData.industry} industry`
     }
 
     if (formData.examples) {
@@ -368,7 +378,7 @@ export default function Home() {
               {/* Tab Content */}
               {activeTab === 'slides' && (
                 <div className="space-y-4">
-                  {response.slides.map((slide) => (
+                  {response.carousel_slides.map((slide) => (
                     <Card key={slide.slide_number} className="hover:shadow-md transition-shadow">
                       <CardHeader className="pb-3">
                         <div className="flex items-start justify-between">
@@ -394,10 +404,14 @@ export default function Home() {
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        <p className="text-gray-700 leading-relaxed">{slide.supporting_text}</p>
+                        <div className="whitespace-pre-wrap text-gray-700 leading-relaxed">{slide.supporting_text}</div>
                         <div className="bg-gray-50 rounded-md p-3 border border-gray-200">
                           <p className="text-xs font-medium text-gray-500 mb-1">Visual Suggestion:</p>
                           <p className="text-sm text-gray-700">{slide.visual_suggestion}</p>
+                        </div>
+                        <div className="bg-blue-50 rounded-md p-3 border border-blue-100">
+                          <p className="text-xs font-medium text-blue-700 mb-1">Design Notes:</p>
+                          <p className="text-sm text-blue-900">{slide.design_notes}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -411,7 +425,7 @@ export default function Home() {
                     <div className="flex items-center justify-between">
                       <CardTitle>Post Caption</CardTitle>
                       <button
-                        onClick={() => handleCopy(response.caption, 'caption')}
+                        onClick={() => handleCopy(response.caption.full_caption, 'caption')}
                         className="text-gray-500 hover:text-gray-700 p-1"
                       >
                         {copiedStates.caption ? (
@@ -425,8 +439,25 @@ export default function Home() {
                   <CardContent>
                     <div className="bg-gray-50 rounded-md p-4 border border-gray-200">
                       <pre className="whitespace-pre-wrap font-sans text-gray-800 leading-relaxed">
-                        {response.caption}
+                        {response.caption.full_caption}
                       </pre>
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      <div className="p-3 bg-blue-50 rounded-md border border-blue-100">
+                        <p className="text-xs font-medium text-blue-700 mb-1">Hook:</p>
+                        <p className="text-sm text-blue-900">{response.caption.hook}</p>
+                      </div>
+
+                      <div className="p-3 bg-purple-50 rounded-md border border-purple-100">
+                        <p className="text-xs font-medium text-purple-700 mb-1">Body:</p>
+                        <pre className="text-sm text-purple-900 whitespace-pre-wrap font-sans">{response.caption.body}</pre>
+                      </div>
+
+                      <div className="p-3 bg-green-50 rounded-md border border-green-100">
+                        <p className="text-xs font-medium text-green-700 mb-1">CTA:</p>
+                        <p className="text-sm text-green-900">{response.caption.cta}</p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -437,9 +468,12 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle>Broad Reach Hashtags</CardTitle>
+                        <div>
+                          <CardTitle>Broad Reach Hashtags</CardTitle>
+                          <p className="text-xs text-gray-500 mt-1">5 hashtags for maximum visibility</p>
+                        </div>
                         <button
-                          onClick={() => handleCopy(response.hashtags.broad_reach.join(' '), 'hashtags-broad')}
+                          onClick={() => handleCopy(response.hashtags.broad.join(' '), 'hashtags-broad')}
                           className="text-gray-500 hover:text-gray-700 p-1"
                         >
                           {copiedStates['hashtags-broad'] ? (
@@ -452,7 +486,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {response.hashtags.broad_reach.map((tag, idx) => (
+                        {response.hashtags.broad.map((tag, idx) => (
                           <span
                             key={idx}
                             className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
@@ -467,9 +501,12 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle>Niche Specific Hashtags</CardTitle>
+                        <div>
+                          <CardTitle>Niche Specific Hashtags</CardTitle>
+                          <p className="text-xs text-gray-500 mt-1">5 hashtags for targeted audience</p>
+                        </div>
                         <button
-                          onClick={() => handleCopy(response.hashtags.niche_specific.join(' '), 'hashtags-niche')}
+                          onClick={() => handleCopy(response.hashtags.niche.join(' '), 'hashtags-niche')}
                           className="text-gray-500 hover:text-gray-700 p-1"
                         >
                           {copiedStates['hashtags-niche'] ? (
@@ -482,7 +519,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {response.hashtags.niche_specific.map((tag, idx) => (
+                        {response.hashtags.niche.map((tag, idx) => (
                           <span
                             key={idx}
                             className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium"
@@ -497,9 +534,12 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle>Authority Building Hashtags</CardTitle>
+                        <div>
+                          <CardTitle>Authority Building Hashtags</CardTitle>
+                          <p className="text-xs text-gray-500 mt-1">5 hashtags for thought leadership</p>
+                        </div>
                         <button
-                          onClick={() => handleCopy(response.hashtags.authority_building.join(' '), 'hashtags-authority')}
+                          onClick={() => handleCopy(response.hashtags.authority.join(' '), 'hashtags-authority')}
                           className="text-gray-500 hover:text-gray-700 p-1"
                         >
                           {copiedStates['hashtags-authority'] ? (
@@ -512,7 +552,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {response.hashtags.authority_building.map((tag, idx) => (
+                        {response.hashtags.authority.map((tag, idx) => (
                           <span
                             key={idx}
                             className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium"
@@ -520,6 +560,29 @@ export default function Home() {
                             {tag}
                           </span>
                         ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle>All Hashtags Combined</CardTitle>
+                        <button
+                          onClick={() => handleCopy(response.hashtags.all_hashtags, 'hashtags-all')}
+                          className="text-gray-500 hover:text-gray-700 p-1"
+                        >
+                          {copiedStates['hashtags-all'] ? (
+                            <Check size={18} className="text-green-600" />
+                          ) : (
+                            <Copy size={18} />
+                          )}
+                        </button>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="bg-gray-50 rounded-md p-4 border border-gray-200">
+                        <p className="text-sm text-gray-800 break-words">{response.hashtags.all_hashtags}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -531,6 +594,7 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <CardTitle>Alternative Hooks</CardTitle>
+                      <p className="text-xs text-gray-500 mt-1">3 alternative opening lines for testing</p>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
@@ -559,6 +623,7 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <CardTitle>Alternative CTAs</CardTitle>
+                      <p className="text-xs text-gray-500 mt-1">3 alternative call-to-action options</p>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
@@ -586,35 +651,40 @@ export default function Home() {
 
                   <Card>
                     <CardHeader>
-                      <CardTitle>Posting Strategy</CardTitle>
+                      <CardTitle>Posting Time Recommendations</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <p className="text-sm font-medium text-gray-700 mb-1">Best Time to Post:</p>
-                        <p className="text-lg font-semibold text-blue-600">{response.posting_strategy.best_time}</p>
-                      </div>
-
-                      <div>
-                        <p className="text-sm font-medium text-gray-700 mb-2">Engagement Tips:</p>
-                        <ul className="space-y-2">
-                          {response.posting_strategy.engagement_tips.map((tip, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <span className="text-blue-600 mt-1">•</span>
-                              <span className="text-gray-700">{tip}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div>
-                        <p className="text-sm font-medium text-gray-700 mb-2">Follow-up Comments:</p>
-                        <div className="space-y-2">
-                          {response.posting_strategy.follow_up_comments.map((comment, idx) => (
-                            <div key={idx} className="p-2 bg-gray-50 rounded border border-gray-200 text-sm text-gray-700">
-                              {comment}
-                            </div>
+                        <p className="text-sm font-medium text-gray-700 mb-2">Best Times:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {response.posting_recommendations.best_times.map((time, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-blue-100 text-blue-700 rounded-md text-sm font-medium"
+                            >
+                              {time}
+                            </span>
                           ))}
                         </div>
+                      </div>
+
+                      <div>
+                        <p className="text-sm font-medium text-gray-700 mb-2">Best Days:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {response.posting_recommendations.best_days.map((day, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-green-100 text-green-700 rounded-md text-sm font-medium"
+                            >
+                              {day}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="bg-gray-50 rounded-md p-3 border border-gray-200">
+                        <p className="text-xs font-medium text-gray-500 mb-1">Reasoning:</p>
+                        <p className="text-sm text-gray-700">{response.posting_recommendations.reasoning}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -622,6 +692,7 @@ export default function Home() {
                   <Card>
                     <CardHeader>
                       <CardTitle>Engagement Questions</CardTitle>
+                      <p className="text-xs text-gray-500 mt-1">{response.engagement_questions.length} questions to spark conversation</p>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
@@ -646,6 +717,19 @@ export default function Home() {
                       </div>
                     </CardContent>
                   </Card>
+
+                  {response.content_strategy_notes && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Content Strategy Notes</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="bg-amber-50 rounded-md p-4 border border-amber-200">
+                          <p className="text-sm text-amber-900">{response.content_strategy_notes}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
                 </div>
               )}
             </div>
