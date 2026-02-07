@@ -1,0 +1,20 @@
+{
+  "workflow_name": "LinkedIn Carousel Post Generator",
+  "workflow_type": "single_agent",
+  "agents": [
+    {
+      "agent_id": "6986f03f95535c453591408b",
+      "agent_name": "Carousel Generator Agent",
+      "agent_type": "single",
+      "node_id": "carousel_generator_agent",
+      "trigger": "Generate Carousel on Input Screen",
+      "status": "active",
+      "model": "gpt-4o",
+      "provider": "OpenAI",
+      "temperature": 0.8,
+      "top_p": 0.95
+    }
+  ],
+  "created_at": "2026-02-07T00:00:00Z",
+  "status": "completed"
+}

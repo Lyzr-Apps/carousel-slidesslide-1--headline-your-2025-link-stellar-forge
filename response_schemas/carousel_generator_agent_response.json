@@ -1,0 +1,327 @@
+{
+  "agent_name": "Carousel Generator Agent",
+  "agent_id": "6986f03f95535c453591408b",
+  "agent_purpose": "LinkedIn carousel content generation with slides, captions, hashtags, and strategy",
+  "description": "Complete LinkedIn carousel package including 10 slides with headlines/supporting text/visuals, Justin-Welsh style caption, 15 strategic hashtags categorized by reach, alternative hooks and CTAs, posting strategy, and engagement questions",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "slides": [
+        {
+          "slide_number": "number",
+          "headline": "string",
+          "supporting_text": "string",
+          "visual_suggestion": "string"
+        }
+      ],
+      "caption": "string",
+      "hashtags": {
+        "broad_reach": [
+          "string"
+        ],
+        "niche_specific": [
+          "string"
+        ],
+        "authority_building": [
+          "string"
+        ]
+      },
+      "alternative_hooks": [
+        "string"
+      ],
+      "alternative_ctas": [
+        "string"
+      ],
+      "posting_strategy": {
+        "best_time": "string",
+        "engagement_tips": [
+          "string"
+        ],
+        "follow_up_comments": [
+          "string"
+        ]
+      },
+      "engagement_questions": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string",
+      "input_parameters": {
+        "topic": "string",
+        "target_audience": "string",
+        "primary_goal": "string",
+        "tone": "string",
+        "content_depth": "string",
+        "cta_type": "string"
+      }
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "slides": [
+        {
+          "slide_number": 1,
+          "headline": "Building Your SaaS Personal Brand",
+          "supporting_text": "Discover strategies to captivate and convert on LinkedIn. Elevate your presence as a SaaS founder.",
+          "visual_suggestion": "Image of a confident professional using a laptop, with LinkedIn icon overlay."
+        },
+        {
+          "slide_number": 2,
+          "headline": "Define Your Unique Value",
+          "supporting_text": "What sets your SaaS apart? Clarify your mission and core values to stand out.",
+          "visual_suggestion": "Illustration of a light bulb with SaaS keywords surrounding it."
+        },
+        {
+          "slide_number": 3,
+          "headline": "Craft a Compelling Profile",
+          "supporting_text": "Optimize your LinkedIn headline and summary. Use clear, bold statements.",
+          "visual_suggestion": "Screenshot of a LinkedIn profile with highlighted sections: headline, summary."
+        },
+        {
+          "slide_number": 4,
+          "headline": "Share Authentic Stories",
+          "supporting_text": "Narrate your journey in SaaS. Stories build connections and trust.",
+          "visual_suggestion": "Graphic of a storytelling illustration, such as a founder with a speech bubble."
+        },
+        {
+          "slide_number": 5,
+          "headline": "Engage With Your Network",
+          "supporting_text": "Be proactive. Comment and interact authentically with peers and prospects.",
+          "visual_suggestion": "Image of a LinkedIn feed with comments and likes highlighted."
+        },
+        {
+          "slide_number": 6,
+          "headline": "Leverage Thought Leadership",
+          "supporting_text": "Publish expert content. Position yourself as an industry authority.",
+          "visual_suggestion": "Microphone icon alongside a notepad symbol, representing thought leadership."
+        },
+        {
+          "slide_number": 7,
+          "headline": "Utilize LinkedIn Features",
+          "supporting_text": "Make use of LinkedIn articles, videos, and carousel posts to diversify content.",
+          "visual_suggestion": "Icons of LinkedIn features such as articles, video, and carousel stacked together."
+        },
+        {
+          "slide_number": 8,
+          "headline": "Build Strategic Partnerships",
+          "supporting_text": "Collaborate with other founders. Network for mutual growth and exposure.",
+          "visual_suggestion": "Image of a handshake or two businesspeople engaging in discussion."
+        },
+        {
+          "slide_number": 9,
+          "headline": "Consistency is Key",
+          "supporting_text": "Share regularly. Keep your brand top-of-mind in the SaaS community.",
+          "visual_suggestion": "Calendar icon with regular posting reminders."
+        },
+        {
+          "slide_number": 10,
+          "headline": "Let's Chat Success",
+          "supporting_text": "Ready to elevate your brand? DM me to strategize your journey.",
+          "visual_suggestion": "Bold graphic featuring a direct message icon with a call to action."
+        }
+      ],
+      "caption": "\ud83d\udd25 Want to build a winning personal brand in the SaaS industry? \n\nAs an early-stage founder, making your mark on LinkedIn can be transformative for your growth. \n\nIn this carousel, you'll discover:\n- How to define your unique value\n- Engaging your network authentically\n- Leveraging LinkedIn's features to boost visibility\n\nReady to elevate your SaaS journey?\n\n\ud83d\udc40 Dive in, take notes, and let's chat about your success pathway! \n\n#PersonalBrand #SaaSFounders #LinkedInGrowth",
+      "hashtags": {
+        "broad_reach": [
+          "#LinkedIn",
+          "#PersonalBranding",
+          "#SaaS",
+          "#Startups",
+          "#Entrepreneur"
+        ],
+        "niche_specific": [
+          "#SaaSFounders",
+          "#TechStartups",
+          "#B2BMarketing",
+          "#StartupGrowth",
+          "#FounderTips"
+        ],
+        "authority_building": [
+          "#ThoughtLeadership",
+          "#IndustryInsights",
+          "#NetworkingSuccess",
+          "#DigitalStrategy",
+          "#BrandBuilding"
+        ]
+      },
+      "alternative_hooks": [
+        "Want your SaaS story to stand out on LinkedIn?",
+        "Elevate your SaaS brand presence on LinkedIn today!",
+        "Is your SaaS LinkedIn profile working for you?"
+      ],
+      "alternative_ctas": [
+        "DM me to start your branding transformation.",
+        "Let's discuss boosting your LinkedIn impact. Send me a DM!",
+        "Ready to take the next step? Message me for tailored advice."
+      ],
+      "posting_strategy": {
+        "best_time": "Tuesday at 9 AM",
+        "engagement_tips": [
+          "Respond promptly to comments to encourage further discussion.",
+          "Tag industry peers to extend reach and interaction.",
+          "Engage with those who engage with your content to build relationships."
+        ],
+        "follow_up_comments": [
+          "Thanks for engaging! What's the biggest challenge in your SaaS journey?",
+          "Appreciate your thoughts! How do you ensure brand consistency?",
+          "Great to see your feedback! What strategies are you exploring?"
+        ]
+      },
+      "engagement_questions": [
+        "What\u2019s the most valuable lesson you've learned as a SaaS founder?",
+        "How do you use LinkedIn to strengthen your brand presence?",
+        "Which SaaS trends are you currently most excited about?"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Carousel Generator Agent",
+      "timestamp": "2023-10-01T10:00:00Z",
+      "input_parameters": {
+        "topic": "How to build personal brand on LinkedIn as a founder in the SaaS industry",
+        "target_audience": "early-stage startup founders",
+        "primary_goal": "Lead Gen",
+        "tone": "Bold",
+        "content_depth": "Intermediate",
+        "cta_type": "DM"
+      }
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-02-07T07:58:00.002346",
+  "test_message_used": "Hello, provide a sample response",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "slides": [
+        {
+          "slide_number": 1,
+          "headline": "Building Your SaaS Personal Brand",
+          "supporting_text": "Discover strategies to captivate and convert on LinkedIn. Elevate your presence as a SaaS founder.",
+          "visual_suggestion": "Image of a confident professional using a laptop, with LinkedIn icon overlay."
+        },
+        {
+          "slide_number": 2,
+          "headline": "Define Your Unique Value",
+          "supporting_text": "What sets your SaaS apart? Clarify your mission and core values to stand out.",
+          "visual_suggestion": "Illustration of a light bulb with SaaS keywords surrounding it."
+        },
+        {
+          "slide_number": 3,
+          "headline": "Craft a Compelling Profile",
+          "supporting_text": "Optimize your LinkedIn headline and summary. Use clear, bold statements.",
+          "visual_suggestion": "Screenshot of a LinkedIn profile with highlighted sections: headline, summary."
+        },
+        {
+          "slide_number": 4,
+          "headline": "Share Authentic Stories",
+          "supporting_text": "Narrate your journey in SaaS. Stories build connections and trust.",
+          "visual_suggestion": "Graphic of a storytelling illustration, such as a founder with a speech bubble."
+        },
+        {
+          "slide_number": 5,
+          "headline": "Engage With Your Network",
+          "supporting_text": "Be proactive. Comment and interact authentically with peers and prospects.",
+          "visual_suggestion": "Image of a LinkedIn feed with comments and likes highlighted."
+        },
+        {
+          "slide_number": 6,
+          "headline": "Leverage Thought Leadership",
+          "supporting_text": "Publish expert content. Position yourself as an industry authority.",
+          "visual_suggestion": "Microphone icon alongside a notepad symbol, representing thought leadership."
+        },
+        {
+          "slide_number": 7,
+          "headline": "Utilize LinkedIn Features",
+          "supporting_text": "Make use of LinkedIn articles, videos, and carousel posts to diversify content.",
+          "visual_suggestion": "Icons of LinkedIn features such as articles, video, and carousel stacked together."
+        },
+        {
+          "slide_number": 8,
+          "headline": "Build Strategic Partnerships",
+          "supporting_text": "Collaborate with other founders. Network for mutual growth and exposure.",
+          "visual_suggestion": "Image of a handshake or two businesspeople engaging in discussion."
+        },
+        {
+          "slide_number": 9,
+          "headline": "Consistency is Key",
+          "supporting_text": "Share regularly. Keep your brand top-of-mind in the SaaS community.",
+          "visual_suggestion": "Calendar icon with regular posting reminders."
+        },
+        {
+          "slide_number": 10,
+          "headline": "Let's Chat Success",
+          "supporting_text": "Ready to elevate your brand? DM me to strategize your journey.",
+          "visual_suggestion": "Bold graphic featuring a direct message icon with a call to action."
+        }
+      ],
+      "caption": "\ud83d\udd25 Want to build a winning personal brand in the SaaS industry? \n\nAs an early-stage founder, making your mark on LinkedIn can be transformative for your growth. \n\nIn this carousel, you'll discover:\n- How to define your unique value\n- Engaging your network authentically\n- Leveraging LinkedIn's features to boost visibility\n\nReady to elevate your SaaS journey?\n\n\ud83d\udc40 Dive in, take notes, and let's chat about your success pathway! \n\n#PersonalBrand #SaaSFounders #LinkedInGrowth",
+      "hashtags": {
+        "broad_reach": [
+          "#LinkedIn",
+          "#PersonalBranding",
+          "#SaaS",
+          "#Startups",
+          "#Entrepreneur"
+        ],
+        "niche_specific": [
+          "#SaaSFounders",
+          "#TechStartups",
+          "#B2BMarketing",
+          "#StartupGrowth",
+          "#FounderTips"
+        ],
+        "authority_building": [
+          "#ThoughtLeadership",
+          "#IndustryInsights",
+          "#NetworkingSuccess",
+          "#DigitalStrategy",
+          "#BrandBuilding"
+        ]
+      },
+      "alternative_hooks": [
+        "Want your SaaS story to stand out on LinkedIn?",
+        "Elevate your SaaS brand presence on LinkedIn today!",
+        "Is your SaaS LinkedIn profile working for you?"
+      ],
+      "alternative_ctas": [
+        "DM me to start your branding transformation.",
+        "Let's discuss boosting your LinkedIn impact. Send me a DM!",
+        "Ready to take the next step? Message me for tailored advice."
+      ],
+      "posting_strategy": {
+        "best_time": "Tuesday at 9 AM",
+        "engagement_tips": [
+          "Respond promptly to comments to encourage further discussion.",
+          "Tag industry peers to extend reach and interaction.",
+          "Engage with those who engage with your content to build relationships."
+        ],
+        "follow_up_comments": [
+          "Thanks for engaging! What's the biggest challenge in your SaaS journey?",
+          "Appreciate your thoughts! How do you ensure brand consistency?",
+          "Great to see your feedback! What strategies are you exploring?"
+        ]
+      },
+      "engagement_questions": [
+        "What\u2019s the most valuable lesson you've learned as a SaaS founder?",
+        "How do you use LinkedIn to strengthen your brand presence?",
+        "Which SaaS trends are you currently most excited about?"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Carousel Generator Agent",
+      "timestamp": "2023-10-01T10:00:00Z",
+      "input_parameters": {
+        "topic": "How to build personal brand on LinkedIn as a founder in the SaaS industry",
+        "target_audience": "early-stage startup founders",
+        "primary_goal": "Lead Gen",
+        "tone": "Bold",
+        "content_depth": "Intermediate",
+        "cta_type": "DM"
+      }
+    }
+  },
+  "test_passed": true
+}
